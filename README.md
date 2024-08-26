@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 🚀 Getting Started
 
-## Getting Started
+#### ⚙️ Prepare the environment
 
-First, run the development server:
+1. Make sure you have [Node.js](https://nodejs.org/) installed, preferably with [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/). Ensure that your Node.js version is **20.0.0 or higher**.
+
+2. Clone this repository.
+
+3. Install the dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+or
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+   npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### 🏁 Run app in your browser
 
-## Learn More
+Run the following command at the root path of the project
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+   yarn start:${env}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+or
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+   npm run start:${env}
+```
 
-## Deploy on Vercel
+- **dev**: Development environment used during application development and testing.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔑 Key Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Beincom
+
+  - Authentication: Implement a user authentication system with sign-up, login, and logout functionality. Only authenticated users should be able to view the post details.
+
+  - Commenting System: Add a commenting feature to the post details page. Authenticated users should be able to leave comments on a post. Display the list of comments for each post.
+
+  - Search and Filter: Implement a search functionality on the home page to allow users to search for posts by title or content. Add a filter option to sort posts based on different criteria (e.g., date, number of comments).
+
+  - Pagination: Implement pagination for the list of posts on the home page.
+
+  - Responsive Design: Ensure the application is responsive on both desktop and mobile devices.
+
+  - Testing: Write unit tests for critical components or functions using Jest.
+
+## 🛠️ Tech Stack
+
+#### 💻 Languages
+
+- HTML
+- CSS
+- TypeScript
+
+#### 📚 Frameworks/Libraries
+
+- **Next.js:** Used for building user interfaces with a component-based architecture.
+- **Tailwind CSS:** A utility-first CSS framework for rapidly building custom user interfaces.
+
+## 📁 Structure
+
+```plaintext
+BEIN-COM/
+│
+├── .husky/
+├── .vscode/
+├── public/
+│
+├── src/
+│   ├── app/
+│   ├── components/
+│   ├── config/
+│   ├── hooks/
+│   ├── lib/
+│   ├── services/
+│   └── store/
+├──
+```
+
+## Environment <a name="environment"></a>
+
+- [NEXT_PUBLIC_API_URL](#environment) - Project host API.
+
+## 📝 Version
+
+0.1.0
+
+## 👤 Author
+
+Le Quoc Dat
+
+```
+
+```

@@ -1,14 +1,14 @@
-import Intro from '@/components/ui/intro'
 import { Metadata } from 'next'
 import Image from 'next/image'
 
-import Background from '@images/auth/background.webp'
+import Intro from '@/components/ui/intro'
+import Background from '@/images/auth/background.webp'
 
 export const metadata: Metadata = {
   title: 'Everyone needs a place to be in Beicom',
   description: 'Everyone needs a place to be in Beicom.',
   icons: {
-    icon: '/icons/logo.svg',
+    icon: '/images/logo-mini.webp',
   },
 }
 
