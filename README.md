@@ -6,16 +6,27 @@
 
 2. Clone this repository.
 
-3. Install the dependencies
+3. Move to ` .env.development` file. You have two options:
+
+- Option 1: I have deloy backend. So you can still and not change this file
 
 ```bash
-   yarn install
+   NEXT_PUBLIC_API_ENDPOINT="https://beincom-social-service-1.onrender.com/api"
+
 ```
 
-or
+- Option 2 (Run local) :
+  Clone and run this back-end: [https://github.com/le-dat/beincom-social-service](https://github.com/le-dat/beincom-social-service) for this project and update ` .env.development` file
 
 ```bash
-   npm install
+    NEXT_PUBLIC_API_ENDPOINT="http://localhost:4000/api"
+
+```
+
+4. Install the dependencies
+
+```bash
+   yarn install   |   npm install
 ```
 
 #### 🏁 Run app in your browser
@@ -23,13 +34,7 @@ or
 Run the following command at the root path of the project
 
 ```bash
-   yarn start:${env}
-```
-
-or
-
-```bash
-   npm run start:${env}
+   yarn start:${env}  |  npm run start:${env}
 ```
 
 - **dev**: Development environment used during application development and testing.
@@ -38,9 +43,9 @@ or
 
 - Beincom
 
-  - Authentication: Implement a user authentication system with sign-up, login, and logout functionality. Only authenticated users should be able to view the post details.
+  - Authentication: Implement a user authentication system with sign-up, login, and logout functionality. Only authenticated users should be able to view the post.
 
-  - Commenting System: Add a commenting feature to the post details page. Authenticated users should be able to leave comments on a post. Display the list of comments for each post.
+  - Commenting System: Add a commenting feature to the post details page. Authenticated users can be able to leave comments on a post. Display the list of comments for each post.
 
   - Search and Filter: Implement a search functionality on the home page to allow users to search for posts by title or content. Add a filter option to sort posts based on different criteria (e.g., date, number of comments).
 
@@ -68,6 +73,8 @@ or
 ```plaintext
 BEIN-COM/
 │
+├── .__tests__/
+├── .env/
 ├── .husky/
 ├── .vscode/
 ├── public/
@@ -75,26 +82,22 @@ BEIN-COM/
 ├── src/
 │   ├── app/
 │   ├── components/
-│   ├── config/
+│   ├── constants/
 │   ├── hooks/
-│   ├── lib/
-│   ├── services/
+│   ├── hooks/
+│   ├── provider/
+│   ├── service/
 │   └── store/
+│   └── styles/
+│   ├── types/
+│   ├── utils/
 ├──
 ```
-
-## Environment <a name="environment"></a>
-
-- [NEXT_PUBLIC_API_URL](#environment) - Project host API.
 
 ## 📝 Version
 
 0.1.0
 
-## 👤 Author
+## Author
 
-Le Quoc Dat
-
-```
-
-```
+Le Quoc Dat. See the [Website Portfolio](https://ledat-portfolio.vercel.app/) for details.

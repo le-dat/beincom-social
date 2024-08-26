@@ -39,7 +39,7 @@ export default function Home() {
   }, [inView, refetch, addToListPost])
 
   return (
-    <main className='grid w-screen grid-cols-[1fr_1.5fr_1fr] gap-x-6 px-5 pt-0 xl:gap-x-12 xl:px-11'>
+    <main className='grid w-screen grid-cols-1 gap-x-6 px-5 pt-0 lg:grid-cols-[1fr_1.5fr_1fr] xl:gap-x-12 xl:px-11'>
       <div />
       <div className='flex flex-col gap-y-4'>
         {posts?.map((post, index) => <Post key={index} data={post} />)}

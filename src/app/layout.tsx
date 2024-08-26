@@ -7,7 +7,7 @@ import ProtectRouter from '@/provider/protect-router'
 import ReactQueryProvider from '@/provider/react-query.provider'
 import ToastProvider from '@/provider/toast.provider'
 
-import '../styles/globals.css'
+import '@/styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const ibmPlexSerif = IBM_Plex_Serif({

@@ -23,7 +23,6 @@ const SignIn = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSignUpSchema),
-    mode: 'onChange',
   })
   const { mutate, isPending } = useMutation({ mutationFn: authService.register })
   const disabled =
@@ -35,10 +34,10 @@ const SignIn = () => {
     mutate(
       { email: data.email, name: data.name, password: data.password },
       {
-        onSuccess: (response) => {
+        onSuccess: async (response) => {
           toast.success(response?.message)
-          router.push(ROUTES.LOGIN)
           reset()
+          router.push(ROUTES.LOGIN)
         },
         onError: (error) => {
           console.error(error)
@@ -98,7 +97,7 @@ const SignIn = () => {
           </button>
           <div className='!mt-2 w-full text-center text-xs font-normal text-[rgb(68,79,142)]'>
             By logging in, you agree to our{' '}
-            <a target='_blank' className='underline' href='/privacy&terms'>
+            <a target='_blank' className='underline' href='https://ledat-portfolio.vercel.app/'>
               Privacy &amp; Terms
             </a>
           </div>
@@ -117,7 +116,7 @@ const SignIn = () => {
       <div className='xs:p-12 xs:pt-6 w-full p-6'>
         <div className='text-neutral-60 w-full text-center text-sm'>
           Already have an account?{' '}
-          <Link className='font-medium text-[rgba(9,97,237)] hover:underline' href='/login'>
+          <Link className='font-medium text-[rgba(9,97,237)] hover:underline' href={ROUTES.LOGIN}>
             Login
           </Link>
         </div>

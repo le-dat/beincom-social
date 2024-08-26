@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 
 import HidePwIcon from '@/icons/auth/hide-pw.svg'
 import ShowPwIcon from '@/icons/auth/show-pw.svg'
@@ -41,56 +41,64 @@ const InputWrapper: React.FC<{
   </div>
 )
 
-const InputField: React.FC<InputFieldProps> = ({ id, placeholder, name, errorMessage, ...props }) => (
-  <InputWrapper id={id} errorMessage={errorMessage}>
-    <input
-      placeholder={placeholder}
-      id={id}
-      name={name}
-      aria-describedby={`${id}-description`}
-      aria-invalid={!!errorMessage}
-      className='block h-full w-full px-3 py-2 text-base font-normal text-[rgb(68,79,142)] placeholder:text-base placeholder:font-normal read-only:cursor-default focus-visible:outline-none disabled:font-normal'
-      {...props}
-    />
-  </InputWrapper>
-)
-
-const InputFieldPw: React.FC<InputFieldProps> = ({ id, placeholder, name, errorMessage, ...props }) => {
-  const [showPassword, setShowPassword] = useState<boolean>(false)
-
-  const toggleShowPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    setShowPassword((prev) => !prev)
-  }
-
-  return (
+const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
+  ({ id, placeholder, name, errorMessage, ...props }, ref) => (
     <InputWrapper id={id} errorMessage={errorMessage}>
       <input
-        type={showPassword ? 'text' : 'password'}
+        ref={ref}
         placeholder={placeholder}
         id={id}
         name={name}
         aria-describedby={`${id}-description`}
         aria-invalid={!!errorMessage}
-        className='block h-full w-full px-3 py-2 text-base font-normal placeholder:text-base placeholder:font-normal read-only:cursor-default focus-visible:outline-none disabled:font-normal'
+        className='block h-full w-full px-3 py-2 text-base font-normal text-[rgb(68,79,142)] placeholder:text-base placeholder:font-normal read-only:cursor-default focus-visible:outline-none disabled:font-normal'
         {...props}
       />
-      <button
-        type='button'
-        onClick={toggleShowPassword}
-        className='absolute right-3 top-1/2 flex -translate-y-1/2 items-center space-x-1 text-[rgb(68,79,142)]'
-      >
-        <div className='flex cursor-pointer items-center justify-center'>
-          <Image
-            src={showPassword ? HidePwIcon : ShowPwIcon}
-            draggable={false}
-            alt='show-pw-icon'
-            className='h-6 w-[25px]'
-          />
-        </div>
-      </button>
     </InputWrapper>
   )
-}
+)
+InputField.displayName = 'InputField'
+
+const InputFieldPw = forwardRef<HTMLInputElement, InputFieldProps>(
+  ({ id, placeholder, name, errorMessage, ...props }, ref) => {
+    const [showPassword, setShowPassword] = useState<boolean>(false)
+
+    const toggleShowPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault()
+      setShowPassword((prev) => !prev)
+    }
+
+    return (
+      <InputWrapper id={id} errorMessage={errorMessage}>
+        <input
+          ref={ref}
+          type={showPassword ? 'text' : 'password'}
+          placeholder={placeholder}
+          id={id}
+          name={name}
+          aria-describedby={`${id}-description`}
+          aria-invalid={!!errorMessage}
+          className='block h-full w-full px-3 py-2 text-base font-normal placeholder:text-base placeholder:font-normal read-only:cursor-default focus-visible:outline-none disabled:font-normal'
+          {...props}
+        />
+        <button
+          type='button'
+          onClick={toggleShowPassword}
+          className='absolute right-3 top-1/2 flex -translate-y-1/2 items-center space-x-1 text-[rgb(68,79,142)]'
+        >
+          <div className='flex cursor-pointer items-center justify-center'>
+            <Image
+              src={showPassword ? HidePwIcon : ShowPwIcon}
+              draggable={false}
+              alt='show-pw-icon'
+              className='h-6 w-[25px]'
+            />
+          </div>
+        </button>
+      </InputWrapper>
+    )
+  }
+)
+InputFieldPw.displayName = 'InputFieldPw'
 
 export { InputField, InputFieldPw, Label }

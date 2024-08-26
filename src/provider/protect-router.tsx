@@ -13,13 +13,24 @@ const ProtectRouter = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useUserStore()
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      router.push(ROUTES.LOGIN)
-      return
+    const redirectToHome = () => {
+      if (pathName === ROUTES.LOGIN || pathName === ROUTES.REGISTER) {
+        router.push(ROUTES.HOME)
+      }
     }
-    if (pathName === ROUTES.LOGIN || pathName === ROUTES.REGISTER) {
-      router.push(ROUTES.HOME)
-      return
+
+    const redirectToLogin = () => {
+      if (pathName === ROUTES.REGISTER) {
+        router.push(ROUTES.REGISTER)
+      } else {
+        router.push(ROUTES.LOGIN)
+      }
+    }
+
+    if (isAuthenticated) {
+      redirectToHome()
+    } else {
+      redirectToLogin()
     }
   }, [isAuthenticated, pathName, router])
 

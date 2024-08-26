@@ -1,7 +1,8 @@
 import { useSearchParams } from 'next/navigation'
 
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 
+import useClickOutside from '@/hooks/use-click-outside'
 import { pushParamsToUrl } from '@/utils/function'
 
 import { CloseIcon, SearchIcon } from './ui/icon'
@@ -9,14 +10,15 @@ import { CloseIcon, SearchIcon } from './ui/icon'
 const Search = () => {
   const id = useId()
   const searchParams = useSearchParams()
+
   const [value, setValue] = useState<string>('')
-  const [isFocused, setIsFocused] = useState<boolean>(false)
-
   const isExistValue = value?.trim()?.length > 0
-  const handleResetValue = () => setValue('')
 
-  const handleFocus = () => setIsFocused(true)
-  const handleBlur = () => setIsFocused(false)
+  const boxRef = useRef<HTMLDivElement>(null)
+  const [isOpen, setIsOpen] = useState(false)
+  useClickOutside(boxRef, () => setIsOpen(false))
+
+  const handleResetValue = () => setValue('')
 
   const handleSubmit = async () => {
     if (!isExistValue) return
@@ -41,8 +43,7 @@ const Search = () => {
           type='text'
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          onClick={() => setIsOpen(true)}
           onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
           placeholder='Search Content'
           className='disabled:text-neutral-20 block h-full w-full bg-transparent pr-2 text-sm font-normal text-[rgba(46,54,96)] outline-none placeholder:text-sm placeholder:text-[rgba(179,185,218)] placeholder-shown:truncate focus:border-primary disabled:cursor-not-allowed'
@@ -57,8 +58,11 @@ const Search = () => {
         )}
       </div>
 
-      {isFocused && (
-        <div className='absolute left-1/2 top-[120%] z-[1] w-[400px] -translate-x-1/2 transform rounded-md border bg-white p-[1rem] text-[rgba(46,54,96)] shadow-xl'>
+      {isOpen && (
+        <div
+          ref={boxRef}
+          className='absolute left-1/2 top-[120%] z-[1] w-[400px] -translate-x-1/2 transform rounded-md border bg-white p-[1rem] text-[rgba(46,54,96)] shadow-xl'
+        >
           <div className='flex h-10 items-center justify-between p-2'>
             <span className='text-neutral-60 text-base font-semibold'>Recent searches</span>
             <span className='cursor-pointer text-sm font-semibold text-blue-500 hover:underline'>Clear all</span>

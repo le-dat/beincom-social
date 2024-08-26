@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
 import { InputField, InputFieldPw, Label } from '@/components/ui/input-form'
-import { FORM_SIGN_AUTH } from '@/constants/form'
+import { FORM_LOGIN_AUTH, FORM_SIGN_AUTH } from '@/constants/form'
 import { ROUTES } from '@/constants/routes'
 import authService from '@/service/auth.service'
 import { useUserStore } from '@/store/user.store'
@@ -25,21 +25,21 @@ const SignIn = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationLoginSchema),
-    mode: 'onChange',
   })
   const router = useRouter()
-  const { setUser } = useUserStore()
+  const { setUser, setIsAuthenticated } = useUserStore()
   const { mutate, isPending } = useMutation({ mutationFn: authService.login })
-  const disabled = isPending || !watch(FORM_SIGN_AUTH.email) || !watch(FORM_SIGN_AUTH.password)
+  const disabled = isPending || !watch(FORM_LOGIN_AUTH.email) || !watch(FORM_LOGIN_AUTH.password)
 
   const onSubmit = (data: any) => {
     if (disabled) return
     mutate(
       { email: data.email, password: data.password },
       {
-        onSuccess: (response) => {
+        onSuccess: async (response) => {
           toast.success(response.message)
           setUser(response?.data?.user!)
+          setIsAuthenticated(true)
           TokenStorage.setToken(response?.data?.tokens?.access_token!)
           TokenStorage.setRefreshToken(response?.data?.tokens?.refresh_token!)
           router.push(ROUTES.HOME)
@@ -94,18 +94,18 @@ const SignIn = () => {
           </button>
           <div className='!mt-2 w-full text-center text-xs font-normal text-[rgb(68,79,142)]'>
             By logging in, you agree to our{' '}
-            <a target='_blank' className='underline' href='/privacy&terms'>
+            <a target='_blank' className='underline' href='https://ledat-portfolio.vercel.app/'>
               Privacy &amp; Terms
             </a>
           </div>
           <div className='flex items-center gap-1'>
-            <a
-              className='mx-auto cursor-pointer text-center !text-sm font-normal text-[rgba(9,97,237)] hover:underline disabled:cursor-not-allowed disabled:text-[rgb(68,79,142)] disabled:no-underline'
+            <button
               type='button'
-              href='/reset-password'
+              onClick={() => toast.info('Coming soon!')}
+              className='mx-auto cursor-pointer text-center !text-sm font-normal text-[rgba(9,97,237)] hover:underline disabled:cursor-not-allowed disabled:text-[rgb(68,79,142)] disabled:no-underline'
             >
               Forgot password?
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -113,7 +113,7 @@ const SignIn = () => {
       <div className='xs:p-12 xs:pt-6 w-full p-6'>
         <div className='text-neutral-60 w-full text-center text-sm'>
           Don’t have an account?{' '}
-          <a className='font-medium text-[rgba(9,97,237)] hover:underline' href='/register'>
+          <a className='font-medium text-[rgba(9,97,237)] hover:underline' href={ROUTES.REGISTER}>
             Sign up
           </a>
         </div>

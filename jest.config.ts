@@ -9,6 +9,8 @@ const createJestConfig = nextJest({
 
 // Add any custom config to be passed to Jest
 const config: Config = {
+  preset: 'ts-jest',
+  testMatch: ['**/__tests__/**/*.ts', '**/?(*.)+(spec|test).ts'],
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
   // Add more setup options before each test is run

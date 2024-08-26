@@ -18,7 +18,7 @@ const PostDetail = () => {
   if (isLoading) return <Loading />
 
   return (
-    <div className='grid w-screen grid-cols-[1fr_2fr_1fr]'>
+    <div className='grid w-screen grid-cols-1 lg:grid-cols-[1fr_2fr_1fr]'>
       <div />
       <Post data={data} showComment className='h-fit' refetch={refetch} />
       <div />
