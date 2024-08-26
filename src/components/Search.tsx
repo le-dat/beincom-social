@@ -61,7 +61,7 @@ const Search = () => {
       {isOpen && (
         <div
           ref={boxRef}
-          className='absolute left-1/2 top-[120%] z-[1] w-[400px] -translate-x-1/2 transform rounded-md border bg-white p-[1rem] text-[rgba(46,54,96)] shadow-xl'
+          className='absolute left-1/2 top-[120%] z-[1] w-[370px] -translate-x-1/2 transform rounded-md border bg-white p-[1rem] text-[rgba(46,54,96)] shadow-xl'
         >
           <div className='flex h-10 items-center justify-between p-2'>
             <span className='text-neutral-60 text-base font-semibold'>Recent searches</span>

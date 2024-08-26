@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { useRouter } from 'next/navigation'
+'use client'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import { useEffect, useState } from 'react'
 
@@ -10,6 +11,8 @@ const FilterNumberComment = () => {
   const [inputValue, setInputValue] = useState<number | ''>('')
   const router = useRouter()
   const debouncedValue = useDebounce(inputValue, 800)
+  const searchParams = useSearchParams()
+  const numberOfComments = searchParams.get('number_of_comments') ?? 0
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value === '' ? '' : parseInt(e.target.value, 10)
@@ -28,7 +31,7 @@ const FilterNumberComment = () => {
       value={inputValue}
       onChange={handleChange}
       className='rounded border p-2'
-      placeholder='Enter a number...'
+      placeholder={numberOfComments ? numberOfComments : 'Enter a number...'}
     />
   )
 }

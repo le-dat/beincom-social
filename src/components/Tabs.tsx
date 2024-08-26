@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
@@ -16,7 +18,7 @@ const Tabs = () => {
   const params = useParams()
 
   return (
-    <div className='flex items-center text-primary'>
+    <div className='hidden items-center text-primary lg:flex'>
       {pages.map((item, index) => {
         const isActive = item.path === params.path
         return (

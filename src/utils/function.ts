@@ -24,3 +24,5 @@ export const getLastWeek = () => {
   lastWeek.setDate(lastWeek.getDate() - 7)
   return lastWeek.toISOString().split('T')[0]
 }
+
+export const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))

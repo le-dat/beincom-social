@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
+'use client'
+
 import Image from 'next/image'
 
 import React, { useEffect, useRef } from 'react'
