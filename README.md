@@ -15,6 +15,8 @@
 
 ```
 
+Sometime my backend is not available, so you need to install it manually with option 2
+
 - Option 2 (Run local) :
   Clone and run this back-end: [https://github.com/le-dat/beincom-social-service](https://github.com/le-dat/beincom-social-service) for this project and update ` .env.development` file
 
