@@ -6,12 +6,14 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import useDebounce from '@/hooks/use-debounce'
-import { delay, pushParamsToUrl } from '@/utils/function'
+import usePushParams from '@/hooks/use-push-params'
+import { delay } from '@/utils/function'
 
 const FilterDate = ({ options }: { options: { label: string; value: string }[] }) => {
   const [selectedValue, setSelectedValue] = useState<string>('')
   const searchParams = useSearchParams()
   const date = searchParams.get('date') ?? ''
+  const { pushParamsToUrl } = usePushParams()
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(e.target.value)
@@ -41,6 +43,7 @@ const FilterNumberComment = () => {
   const debouncedValue = useDebounce(inputValue, 800)
   const searchParams = useSearchParams()
   const numberOfComments = searchParams.get('number_of_comments') ?? 0
+  const { pushParamsToUrl } = usePushParams()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value === '' ? '' : parseInt(e.target.value, 10)
@@ -51,7 +54,7 @@ const FilterNumberComment = () => {
     if (debouncedValue !== '') {
       pushParamsToUrl({ number_of_comments: debouncedValue })
     }
-  }, [debouncedValue, router])
+  }, [debouncedValue, pushParamsToUrl, router])
 
   return (
     <input

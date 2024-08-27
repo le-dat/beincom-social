@@ -1,14 +1,3 @@
-import { ROUTES } from '@/constants/routes'
-
-export const pushParamsToUrl = (params: Record<string, any>) => {
-  const searchParams = new URLSearchParams(window.location.search)
-  Object.entries(params).forEach(([key, value]) => {
-    searchParams.set(key, value)
-  })
-  const newUrl = `${ROUTES.SEARCH}?${searchParams.toString()}`
-  window.location.replace(newUrl)
-}
-
 export const getToday = () => {
   return new Date().toISOString().split('T')[0]
 }

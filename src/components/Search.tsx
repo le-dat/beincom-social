@@ -3,13 +3,14 @@ import { useSearchParams } from 'next/navigation'
 import { useEffect, useId, useRef, useState } from 'react'
 
 import useClickOutside from '@/hooks/use-click-outside'
-import { pushParamsToUrl } from '@/utils/function'
+import usePushParams from '@/hooks/use-push-params'
 
 import { CloseIcon, SearchIcon } from './ui/icon'
 
 const Search = () => {
   const id = useId()
   const searchParams = useSearchParams()
+  const { pushParamsToUrl } = usePushParams()
 
   const [value, setValue] = useState<string>('')
   const isExistValue = value?.trim()?.length > 0
