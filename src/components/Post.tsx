@@ -19,10 +19,19 @@ interface IProps {
   showComment?: boolean
   className?: string
   refetch?: () => void
+  searchContent?: string
 }
-const Post = ({ data, showComment, className, refetch }: IProps) => {
+const Post = ({ data, showComment, className, refetch, searchContent = '' }: IProps) => {
   const router = useRouter()
   const [isFocusInput, setIsFocusInput] = useState<boolean>(false)
+
+  const highlightText = (text: string, highlight: string) => {
+    if (!highlight.trim()) {
+      return text
+    }
+    const regex = new RegExp(`(${highlight})`, 'gi')
+    return text.split(regex).map((part, index) => (regex.test(part) ? <mark key={index}>{part}</mark> : part))
+  }
 
   const handleLike = () => {
     toast.info('Coming soon!')
@@ -38,8 +47,8 @@ const Post = ({ data, showComment, className, refetch }: IProps) => {
 
   return (
     <div className={`rounded-md bg-white p-4 ${className}`}>
-      <h1 className='text-lg font-bold'>{data?.title}</h1>
-      <p>{data?.content}</p>
+      <h1 className='text-lg font-bold'>{highlightText(data.title, searchContent)}</h1>
+      <p>{highlightText(data.content, searchContent)}</p>
       <div className={`${showComment ? 'border-y' : 'border-t'} mt-4 grid grid-cols-3 border-slate-300 py-2`}>
         <Button
           onClick={handleLike}

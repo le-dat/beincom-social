@@ -30,7 +30,7 @@ const SearchPage = () => {
     empty: <Empty />,
     data: (
       <div className='flex flex-col gap-y-4'>
-        {data?.data?.map((post: IPost, index: number) => <Post key={index} data={post} />)}
+        {data?.data?.map((post: IPost, index: number) => <Post key={index} data={post} searchContent={content} />)}
       </div>
     ),
   }
