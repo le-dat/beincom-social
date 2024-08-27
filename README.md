@@ -43,17 +43,13 @@ Run the following command at the root path of the project
 
 - Beincom
 
-  - Authentication: Implement a user authentication system with sign-up, login, and logout functionality. Only authenticated users should be able to view the post.
-
-  - Commenting System: Add a commenting feature to the post details page. Authenticated users can be able to leave comments on a post. Display the list of comments for each post.
-
-  - Search and Filter: Implement a search functionality on the home page to allow users to search for posts by title or content. Add a filter option to sort posts based on different criteria (e.g., date, number of comments).
-
-  - Pagination: Implement pagination for the list of posts on the home page.
-
-  - Responsive Design: Ensure the application is responsive on both desktop and mobile devices.
-
-  - Testing: Write unit tests for critical components or functions using Jest.
+  - Authentication: Sign-up, login, and logout functionality. Only authenticated users should be able to view posts.
+  - Commenting System: Click comment. Only authenticated users can leave comments on a post.
+  - Search: Search for posts by title or content.
+  - Filter: Filter option to sort posts based on date or number of comments on the detail post (click comment button).
+  - Pagination: When the user scrolls down, fetch API to add posts to the store by page (Home page)
+  - Responsive Design: Ensure the design is responsive for both desktop and mobile devices.
+  - Testing: Test functions using Jest.
 
 ## 🛠️ Tech Stack
 

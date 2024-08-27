@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+'use client'
 import { useEffect, useState } from 'react'
 
 import { options } from '@/constants/filter'
@@ -12,10 +13,8 @@ const Sidebar = () => {
 
   const handleScroll = () => {
     if (window.scrollY > lastScrollY) {
-      // Scrolling down
       setScrollDirection('down')
     } else {
-      // Scrolling up
       setScrollDirection('up')
     }
     lastScrollY = window.scrollY

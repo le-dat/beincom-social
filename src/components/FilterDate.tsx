@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { delay, pushParamsToUrl } from '@/utils/function'
 
 const FilterDate = ({ options }: { options: { label: string; value: string }[] }) => {
-  const [selectedValue, setSelectedValue] = useState('')
+  const [selectedValue, setSelectedValue] = useState<string>('')
   const searchParams = useSearchParams()
   const date = searchParams.get('date') ?? ''
 
