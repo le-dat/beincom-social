@@ -41,7 +41,7 @@ Run the following command at the root path of the project
 
 ## 🔑 Key Features
 
-- Beincom
+- Beincom social
 
   - Authentication: Sign-up, login, and logout functionality. Only authenticated users should be able to view posts.
   - Commenting System: Click comment. Only authenticated users can leave comments on a post.
@@ -50,6 +50,7 @@ Run the following command at the root path of the project
   - Pagination: When the user scrolls down, fetch API to add posts to the store by page (Home page)
   - Responsive Design: Ensure the design is responsive for both desktop and mobile devices.
   - Testing: Test functions using Jest.
+  - PWA: Apply the PWA to Improved Performance, Offline Capability, SEO Benefits
 
 ## 🛠️ Tech Stack
 

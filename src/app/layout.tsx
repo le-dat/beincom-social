@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic'
 
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { IBM_Plex_Serif, Inter } from 'next/font/google'
 
 import ProtectRouter from '@/provider/protect-router'
@@ -17,11 +17,27 @@ const ibmPlexSerif = IBM_Plex_Serif({
 })
 
 export const metadata: Metadata = {
-  title: 'Everyone needs a place to be in Beicom',
+  title: 'Beincom Social',
   description: 'Everyone needs a place to be in Beicom.',
+  manifest: '/manifest.json',
   icons: {
     icon: '/images/logo-mini.webp',
   },
+  openGraph: {
+    title: 'Beincom Social',
+    description: 'Everyone needs a place to be in Beicom.',
+    siteName: 'Beincom Social',
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#FFFFFF',
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  width: '100%',
+  userScalable: false,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({
