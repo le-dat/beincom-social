@@ -8,7 +8,7 @@
 
 3. Move to ` .env.development` file. You have two options:
 
-- Option 1: I have deloy backend. So you can still and not change this file
+- Option 1: I have deployed the backend, so you can still use it without changing this file.
 
 ```bash
    NEXT_PUBLIC_API_ENDPOINT="https://beincom-social-service-1.onrender.com/api"
