@@ -1,6 +1,6 @@
 'use client'
 
-import { useParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 import { ROUTES } from '@/constants/routes'
 
@@ -13,12 +13,12 @@ const pages = [
 ]
 
 const Tabs = () => {
-  const params = useParams()
+  const pathName = usePathname()
 
   return (
     <div className='hidden items-center text-primary lg:flex'>
       {pages.map((item, index) => {
-        const isActive = item.path === params.path
+        const isActive = item.path === pathName
         return (
           <Tab key={index} path={item.path} label={item.label} icon={item.icon} isActive={isActive} index={index} />
         )
