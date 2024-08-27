@@ -4,9 +4,9 @@ import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
+import Empty from '@/components/Empty'
 import Post from '@/components/Post'
 import Sidebar from '@/components/Sidebar'
-import Empty from '@/components/ui/empty'
 import postService from '@/service/post.service'
 import { IPost } from '@/types/post.type'
 

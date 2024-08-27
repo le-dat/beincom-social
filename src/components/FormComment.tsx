@@ -13,14 +13,14 @@ import postService from '@/service/post.service'
 import { usePostStore } from '@/store/post.store'
 import { IPost } from '@/types/post.type'
 
-interface CommentInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface FormCommentProps extends React.InputHTMLAttributes<HTMLInputElement> {
   data: IPost
   className?: string
   isFocusInput?: boolean
   refetch?: () => void
 }
 
-const CommentInput: React.FC<CommentInputProps> = ({ data, refetch, isFocusInput, className, ...props }) => {
+const FormComment: React.FC<FormCommentProps> = ({ data, refetch, isFocusInput, className, ...props }) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [comment, setComment] = React.useState<string>('')
   const { addComment } = usePostStore()
@@ -69,4 +69,4 @@ const CommentInput: React.FC<CommentInputProps> = ({ data, refetch, isFocusInput
   )
 }
 
-export default CommentInput
+export default FormComment

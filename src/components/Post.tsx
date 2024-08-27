@@ -11,8 +11,8 @@ import LikeIcon from '@/icons/post/like.svg'
 import { IPost } from '@/types/post.type'
 
 import Button from './ui/button'
-import CommentInput from './CommentInput'
 import Comments from './Comments'
+import FormComment from './FormComment'
 
 interface IProps {
   data: IPost
@@ -74,7 +74,7 @@ const Post = ({ data, showComment, className, refetch, searchContent = '' }: IPr
 
       {showComment && (
         <>
-          <CommentInput data={data} className='mt-4' refetch={refetch} isFocusInput={isFocusInput} />
+          <FormComment data={data} className='mt-4' refetch={refetch} isFocusInput={isFocusInput} />
           <Comments data={data} />
         </>
       )}

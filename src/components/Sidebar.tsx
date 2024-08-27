@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react'
 
 import { options } from '@/constants/filter'
 
-import FilterDate from './FilterDate'
-import FilterNumberComment from './FilterNumberComment'
+import { FilterDate, FilterNumberComment } from './ui/filter'
 
 const Sidebar = () => {
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up')

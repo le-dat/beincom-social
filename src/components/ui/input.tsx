@@ -7,16 +7,6 @@ import React, { forwardRef, useState } from 'react'
 import HidePwIcon from '@/icons/auth/hide-pw.svg'
 import ShowPwIcon from '@/icons/auth/show-pw.svg'
 
-interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  children: React.ReactNode
-}
-
-const Label: React.FC<LabelProps> = ({ children, ...rest }) => (
-  <label className='text-sm font-medium text-[rgb(68,79,142)] peer-disabled:cursor-not-allowed' {...rest}>
-    {children}
-  </label>
-)
-
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string
   placeholder: string
@@ -101,4 +91,4 @@ const InputFieldPw = forwardRef<HTMLInputElement, InputFieldProps>(
 )
 InputFieldPw.displayName = 'InputFieldPw'
 
-export { InputField, InputFieldPw, Label }
+export { InputField, InputFieldPw }
