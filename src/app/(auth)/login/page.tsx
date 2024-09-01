@@ -37,7 +37,7 @@ const Login = () => {
       { email: data.email, password: data.password },
       {
         onSuccess: async (response) => {
-          toast.success(response.message)
+          toast.success(response?.message)
           setUser(response?.data?.user!)
           setIsAuthenticated(true)
           TokenStorage.setToken(response?.data?.tokens?.access_token!)

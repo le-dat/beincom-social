@@ -12,9 +12,9 @@ const authService = {
     try {
       const response = await axiosClient.post('/auth/register', { email, name, password })
       return response.data as SuccessResponse<null>
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to register')
+      throw new Error(error?.message ?? 'Failed to register')
     }
   },
 
@@ -22,9 +22,9 @@ const authService = {
     try {
       const response = await axiosClient.post('/auth/login', { email, password })
       return response.data as SuccessResponse<SuccessResponseLogin>
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to login')
+      throw new Error(error?.message ?? 'Failed to login')
     }
   },
 
@@ -32,9 +32,9 @@ const authService = {
     try {
       const response = await axiosClient.post('/auth/logout', { refreshToken })
       return response.data as SuccessResponse<null>
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to logout')
+      throw new Error(error?.message ?? 'Failed to logout')
     }
   },
 
@@ -42,9 +42,9 @@ const authService = {
     try {
       const response = await axiosClient.post('/auth/refresh-token', { refreshToken })
       return response.data as SuccessResponse<null>
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to refresh token')
+      throw new Error(error?.message ?? 'Failed to refresh token')
     }
   },
 }

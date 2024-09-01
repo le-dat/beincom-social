@@ -43,9 +43,10 @@ axiosClient.interceptors.response.use(
 
 const handleErrorResponse = async (error: any) => {
   const originalRequest = error.config
+  const check = originalRequest.url.includes('/auth/register') || originalRequest.url.includes('/auth/login')
   const isAuthError = [400, 401, 403].includes(error?.response?.status)
 
-  if (isAuthError && !originalRequest._retry) {
+  if (isAuthError && !originalRequest._retry && !check) {
     if (isRefreshing) {
       return new Promise((resolve, reject) => {
         failedQueue.push({ resolve, reject })
@@ -91,7 +92,7 @@ const handleResponse = (response: AxiosResponse<any>) => response
 const handleError = (error: any) => {
   const { data } = error.response
   console.error({ error })
-  return data
+  return Promise.reject(data)
 }
 
 export default axiosClient

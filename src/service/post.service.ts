@@ -5,9 +5,9 @@ const postService = {
     try {
       const response = await axiosClient.post('/posts', { title, content })
       return response.data
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to create post')
+      throw new Error(error?.message ?? 'Failed to create post')
     }
   },
 
@@ -17,9 +17,9 @@ const postService = {
         params: { page, limit },
       })
       return response.data
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to fetch posts')
+      throw new Error(error?.message ?? 'Failed to fetch posts')
     }
   },
 
@@ -43,9 +43,9 @@ const postService = {
         params: { title, content, date, number_of_comments, page, limit },
       })
       return response.data
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to filter posts')
+      throw new Error(error?.message ?? 'Failed to filter posts')
     }
   },
 
@@ -53,9 +53,9 @@ const postService = {
     try {
       const response = await axiosClient.get(`/posts/${id}`)
       return response.data
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to fetch post')
+      throw new Error(error?.message ?? 'Failed to fetch post')
     }
   },
 
@@ -63,9 +63,9 @@ const postService = {
     try {
       const response = await axiosClient.put(`/posts/${id}`, { title, content })
       return response.data
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to update post')
+      throw new Error(error?.message ?? 'Failed to update post')
     }
   },
 
@@ -73,9 +73,9 @@ const postService = {
     try {
       const response = await axiosClient.delete(`/posts/${id}`)
       return response.data
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to delete post')
+      throw new Error(error?.message ?? 'Failed to delete post')
     }
   },
 
@@ -83,9 +83,9 @@ const postService = {
     try {
       const response = await axiosClient.post(`/posts/${postId}/comment`, { comment })
       return response.data
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to add comment')
+      throw new Error(error?.message ?? 'Failed to add comment')
     }
   },
 
@@ -93,9 +93,9 @@ const postService = {
     try {
       const response = await axiosClient.put(`/posts/${postId}/comment/${commentId}`, { content })
       return response.data
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to update comment')
+      throw new Error(error?.message ?? 'Failed to update comment')
     }
   },
 
@@ -103,9 +103,9 @@ const postService = {
     try {
       const response = await axiosClient.delete(`/posts/${postId}/comment/${commentId}`)
       return response.data
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      throw new Error('Failed to delete comment')
+      throw new Error(error?.message ?? 'Failed to delete comment')
     }
   },
 }
